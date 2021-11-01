@@ -9,7 +9,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && \
     apt-get install -y build-essential ppl-dev libpari-dev python3-dev python3-pip libntl-dev git && \
     apt-get install --no-install-recommends -y sagemath sagemath-jupyter sagemath-doc-en dvipng ffmpeg imagemagick && \
-    pip3 install surface_dynamics sage-flatsurf && \
+    pip3 install surface_dynamics sage-flatsurf flipper && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get purge -y build-essential ppl-dev libpari-dev python3-dev libntl-dev
 
