@@ -16,12 +16,12 @@ RUN git clone https://github.com/flatsurf/veerer.git && \
     cd veerer && \
     python3 setup.py install
 
-RUN groupadd -g 1000 sage-user && \
-    useradd -m -u 1000 -g 1000 sage-user
-WORKDIR /home/sage-user
-USER sage-user
-RUN mkdir -p  .sage/jupyter-4.1
-COPY ./jupyter_notebook_config.py /home/sage-user/.sage/jupyter-4.1/jupyter_notebook_config.py
+#RUN groupadd -g 1000 sage-user && \
+#    useradd -m -u 1000 -g 1000 sage-user
+WORKDIR /root
+#USER sage-user
+RUN mkdir -p  /root/.sage/jupyter-4.1
+COPY ./jupyter_notebook_config.py /root/.sage/jupyter-4.1/jupyter_notebook_config.py
 EXPOSE 8888
 
-CMD ["sage", "-n", "jupyter", "--no-browser", "--ip=100.106.113.52"]
+CMD ["sage", "-n", "jupyter", "--allow-root", "--no-browser", "--ip=0.0.0.0"]
